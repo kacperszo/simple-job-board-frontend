@@ -11,5 +11,7 @@ export default function (state = "", action) {
                 token: null
             };
         }
+        default:
+            return state
     }
 }
