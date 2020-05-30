@@ -2,7 +2,7 @@ export const url = "http://localhost:8080/api/v1"
 
 const checkForError = response => {
     if (!response.ok) throw Error(response.statusText)
-    return response.json
+    return response.json()
 }
 
 export const findAllAdvertisements = token => {
