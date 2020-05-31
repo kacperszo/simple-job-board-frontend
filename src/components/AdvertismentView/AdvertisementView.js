@@ -2,6 +2,7 @@ import React from "react";
 import style from "./advertisementView.module.scss"
 import PropTypes from "prop-types";
 import AdvertisementsList from "../AdvertisementsList";
+import ReactMarkdown from "react-markdown";
 
 const AdvertisementView = (props) => {
     return (
@@ -13,9 +14,13 @@ const AdvertisementView = (props) => {
                     </div>
                     <div className={`content`}>
                         <p>
-                            {
-                                props.advertisement.content
-                            }
+                            {props.advertisement.content.split(`\n`).map((line, index) => {
+                                return (
+                                    <span key={index}>
+                                        {line}<br/>
+                                    </span>
+                                )
+                            })}
                         </p>
                     </div>
                     <p className="subtitle is-6">

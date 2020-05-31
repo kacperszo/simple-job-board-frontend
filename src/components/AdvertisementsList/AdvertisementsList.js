@@ -10,9 +10,6 @@ function AdvertisementsList(props) {
     const history = useHistory()
     useEffect(() => (setAdvertisements(props.advertisements)), [props.advertisements])
 
-    const handleEdit = (advertisment) => {
-    }
-
     const handleDelete = (advertisment) => {
         removeAdvertisement(advertisment.id, props.token).then(() =>
             setAdvertisements(advertisements.filter(currentAdvertisement => currentAdvertisement.id !== advertisment.id)))
@@ -36,13 +33,9 @@ function AdvertisementsList(props) {
                     key={advertisement.id}
                     advertisement={advertisement}
                     isLoggedIn={!!props.token}
-                    handleEdit={handleEdit}
                     handleDelete={handleDelete}
                     handleToggleVisibility={handleToggleVisibility}
                 />)
-            }
-            {
-                props.token ? <RoundButton content={"+"} href={"/advertisement/new"}/> : null
             }
 
         </div>

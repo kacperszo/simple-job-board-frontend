@@ -20,8 +20,10 @@ const AdvertisementItem = (props) => {
                     <button className={`button is-warning`}
                             onClick={() => props.handleDelete(props.advertisement)}>remove
                     </button>
-                    <button className={`button is-info`} onClick={() => props.handleEdit(props.advertisement)}>edit
-                    </button>
+                    <Link to={`advertisements/${props.advertisement.id}/edit`}>
+                        <button className={`button is-info`}>edit
+                        </button>
+                    </Link>
 
                 </>
             )
@@ -77,7 +79,6 @@ AdvertisementItem.propTypes = {
     }).isRequired,
     handleToggleVisibility: PropTypes.func,
     handleDelete: PropTypes.func,
-    handleEdit: PropTypes.func,
 
 }
 export default AdvertisementItem;

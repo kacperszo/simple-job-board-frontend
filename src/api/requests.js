@@ -44,6 +44,21 @@ export const updateAdvertisement = (advertisement, token) => {
         })
     }).then(checkForError);
 }
+export const createAdvertisement = (advertisement, token) => {
+    return fetch(`${url}/advertisements`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "title": advertisement.title,
+            "content": advertisement.content,
+            "expirationDate": advertisement.expirationDate,
+            "hidden": advertisement.hidden
+        })
+    }).then(checkForError);
+}
 
 export const removeAdvertisement = (id, token) => {
     return fetch(`${url}/advertisements/${id}`, {
