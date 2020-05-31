@@ -2,20 +2,29 @@ import React, {useEffect, useState} from "react";
 import AdvertisementItem from "./AdvertisementItem";
 import PropTypes from "prop-types";
 import {updateAdvertisement, removeAdvertisement} from "../../api";
+import {useHistory} from "react-router-dom";
 
 function AdvertisementsList(props) {
     const [advertisements, setAdvertisements] = useState(props.advertisements)
+    const history = useHistory()
     useEffect(() => (setAdvertisements(props.advertisements)), [props.advertisements])
 
-    const handleEdit = (id) => {
-        console.log(`edit ${id}`)
+    const handleEdit = (advertisment) => {
     }
 
-    const handleDelete = (id) => {
-        console.log(`delete ${id}`)
+    const handleDelete = (advertisment) => {
+        removeAdvertisement(advertisment.id, props.token).then(() =>
+            setAdvertisements(advertisements.filter(currentAdvertisement => currentAdvertisement.id !== advertisment.id)))
     }
-    const handleToggleVisibility = (id) => {
-        console.log(`show/hide ${id}`)
+    const handleToggleVisibility = (advertisement) => {
+        updateAdvertisement({...advertisement, hidden: !advertisement.hidden}, props.token).then(() => {
+            setAdvertisements(advertisements.map(currentAdvertisement => {
+                if (currentAdvertisement.id === advertisement.id) {
+                    currentAdvertisement.hidden = !currentAdvertisement.hidden
+                }
+                return currentAdvertisement
+            }))
+        })
     }
 
 
@@ -44,6 +53,7 @@ AdvertisementsList.propeTypes = {
         creationDate: PropTypes.string.isRequired,
         expirationDate: PropTypes.string.isRequired,
         hidden: PropTypes.bool.isRequired
-    })).isRequired
+    })).isRequired,
+    token: PropTypes.string
 }
 export default AdvertisementsList

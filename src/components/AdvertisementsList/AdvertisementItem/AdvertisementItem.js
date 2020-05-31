@@ -13,14 +13,14 @@ const AdvertisementItem = (props) => {
         if (props.isLoggedIn) {
             return (
                 <>
-                    <button onClick={() => props.handleToggleVisibility(props.advertisement.id)}
+                    <button onClick={() => props.handleToggleVisibility(props.advertisement)}
                             className={props.advertisement.hidden ? `button is-dark` : `button is-light`}>{
                         props.advertisement.hidden ? `show` : `hide`
                     }</button>
                     <button className={`button is-warning`}
-                            onClick={() => props.handleDelete(props.advertisement.id)}>remove
+                            onClick={() => props.handleDelete(props.advertisement)}>remove
                     </button>
-                    <button className={`button is-info`} onClick={() => props.handleEdit(props.advertisement.id)}>edit
+                    <button className={`button is-info`} onClick={() => props.handleEdit(props.advertisement)}>edit
                     </button>
 
                 </>
