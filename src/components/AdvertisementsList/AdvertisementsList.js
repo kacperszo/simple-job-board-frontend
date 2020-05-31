@@ -3,6 +3,7 @@ import AdvertisementItem from "./AdvertisementItem";
 import PropTypes from "prop-types";
 import {updateAdvertisement, removeAdvertisement} from "../../api";
 import {useHistory} from "react-router-dom";
+import RoundButton from "../RoundButton";
 
 function AdvertisementsList(props) {
     const [advertisements, setAdvertisements] = useState(props.advertisements)
@@ -39,6 +40,9 @@ function AdvertisementsList(props) {
                     handleDelete={handleDelete}
                     handleToggleVisibility={handleToggleVisibility}
                 />)
+            }
+            {
+                props.token ? <RoundButton content={"+"} href={"/advertisement/new"}/> : null
             }
 
         </div>
