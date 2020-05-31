@@ -5,11 +5,11 @@ import AdvertisementsList from "../../components/AdvertisementsList";
 export default function Home(props) {
     const [advertisements, setAdvertisements] = useState([])
     useEffect(() => {
-        findAllAdvertisements().then(data => setAdvertisements(data.content));
+        findAllAdvertisements(props.user.token).then(data => setAdvertisements(data.content));
     }, [])
     return (
         <>
-            <AdvertisementsList advertisements={advertisements}/>
+            <AdvertisementsList advertisements={advertisements} token={props.user.token}/>
         </>
     )
 }

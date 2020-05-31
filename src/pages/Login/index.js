@@ -1,6 +1,6 @@
-import Advertisement from "./Advertisement";
-import {userActionsType} from "../../store/actions/userActions";
+import Login from "./Login";
 import {connect} from "react-redux";
+import {userActionsType} from "../../store/actions/userActions";
 
 const mapStateToProps = state => ({user: state.user})
 const mapDispatchToProps = dispatch => {
@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => {
         removeToken: () => dispatch({type: userActionsType.REMOVE_TOKEN}),
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Advertisement);
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
