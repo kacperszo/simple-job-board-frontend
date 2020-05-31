@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {findAllAdvertisements} from "../../api";
 import AdvertisementsList from "../../components/AdvertisementsList";
+import RoundButton from "../../components/RoundButton";
 
 export default function Home(props) {
     const [advertisements, setAdvertisements] = useState([])
@@ -10,6 +11,9 @@ export default function Home(props) {
     return (
         <>
             <AdvertisementsList advertisements={advertisements} token={props.user.token}/>
+            {
+                props.user.token ? <RoundButton content={"+"} href={"/advertisements/new"}/> : null
+            }
         </>
     )
 }
