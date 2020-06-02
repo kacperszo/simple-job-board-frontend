@@ -7,7 +7,6 @@ const Login = (props) => {
     const history = useHistory()
     const [error, setError] = useState()
     const login = (username, password) => {
-        console.log(username, password)
         getUserToken(username, password).then(result => {
                 props.addToken(result.token)
                 setError(null)

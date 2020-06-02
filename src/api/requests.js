@@ -1,4 +1,4 @@
-export const url = "http://localhost:8080/api/v1"
+export const url = `${window.location.origin}/api/v1`
 
 const checkForError = response => {
     if (!response.ok) throw Error(response.statusText)
