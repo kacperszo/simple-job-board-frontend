@@ -1,4 +1,6 @@
-export const url = `${window.location.origin}/api/v1`
+import {api_url} from "../config/config";
+
+const url = api_url
 
 const checkForError = response => {
     if (!response.ok) throw Error(response.statusText)
