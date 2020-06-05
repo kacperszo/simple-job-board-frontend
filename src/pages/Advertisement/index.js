@@ -1,4 +1,4 @@
-import Home from "./Home";
+import Advertisement from "./Advertisement";
 import {userActionsType} from "../../store/actions/userActions";
 import {connect} from "react-redux";
 
@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => {
         removeToken: () => dispatch({type: userActionsType.REMOVE_TOKEN}),
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Advertisement);
