@@ -10,12 +10,13 @@ import Advertisement from "../../pages/Advertisement";
 import Login from "../../pages/Login";
 import NewAdvertisement from "../../pages/NewAdvertisement";
 import EditAdvertisement from "../../pages/EditAdvertisement";
+import {title} from "../../config/config";
 
 function App() {
     return (
         <>
             <Router>
-                <Navbar title={"Simple-Job-Board"}/>
+                <Navbar title={title}/>
                 <Switch>
                     <Route excat path={"/advertisements/new"}>
                         <NewAdvertisement/>

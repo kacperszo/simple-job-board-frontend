@@ -3,8 +3,10 @@ import style from "./advertisementView.module.scss"
 import PropTypes from "prop-types";
 import AdvertisementsList from "../AdvertisementsList";
 import ReactMarkdown from "react-markdown";
+import {getLocal} from "../../config/local";
 
 const AdvertisementView = (props) => {
+    const local = getLocal();
     return (
         <div className={`container`}>
             <div className={`card ${style.advertisement}`}>
@@ -24,10 +26,13 @@ const AdvertisementView = (props) => {
                         </p>
                     </div>
                     <p className="subtitle is-6">
-                        {`Expiration date ${props.advertisement.expirationDate.substring(0, 10)}`}
+                        {`${local.expirationDate} ${props.advertisement.expirationDate.substring(0, 10)}`}
                     </p>
                     <div className={`buttons`}>
-                        <a className={`button is-primary`} href={`mailto:hr@TestCompany.test`}>Apply
+                        <a className={`button is-primary`} href={`mailto:hr@TestCompany.test`}>
+                            {
+                                local.apply
+                            }
                         </a>
                     </div>
                 </div>

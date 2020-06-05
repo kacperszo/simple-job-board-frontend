@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import style from "./advertisementItem.module.scss"
+import {getLocal} from "../../../config/local";
 
 function millisecondsToDays(milliseconds) {
     return milliseconds / 1000 / 60 / 60 / 24;
 }
 
 const AdvertisementItem = (props) => {
+    const local = getLocal();
     function renderAdminBlock() {
 
         if (props.isLoggedIn) {
@@ -15,13 +17,18 @@ const AdvertisementItem = (props) => {
                 <>
                     <button onClick={() => props.handleToggleVisibility(props.advertisement)}
                             className={props.advertisement.hidden ? `button is-dark` : `button is-light`}>{
-                        props.advertisement.hidden ? `show` : `hide`
+                        props.advertisement.hidden ? local.show : local.hide
                     }</button>
                     <button className={`button is-warning`}
-                            onClick={() => props.handleDelete(props.advertisement)}>remove
+                            onClick={() => props.handleDelete(props.advertisement)}>{
+                        local.remove
+                    }
                     </button>
                     <Link to={`advertisements/${props.advertisement.id}/edit`}>
-                        <button className={`button is-info`}>edit
+                        <button className={`button is-info`}>
+                            {
+                                local.edit
+                            }
                         </button>
                     </Link>
 
@@ -54,12 +61,13 @@ const AdvertisementItem = (props) => {
                 <p className="subtitle is-6">
                     {
 
-                        `Expire in ${getTimeToExpirationInDays(props.advertisement.expirationDate)} days`
+                        `${local.expireIn} ${getTimeToExpirationInDays(props.advertisement.expirationDate)} ${local.days}`
                     }
                 </p>
                 <div className={`buttons`}>
-                    <Link className={`button is-primary`} to={`advertisements/${props.advertisement.id}`}>Read
-                        more
+                    <Link className={`button is-primary`} to={`advertisements/${props.advertisement.id}`}>{
+                        local.readMore
+                    }
                     </Link>
                     {renderAdminBlock()}
                 </div>
